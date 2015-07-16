@@ -1,0 +1,86 @@
+DELETE popular
+
+GET _search
+{
+  "query": {
+    "match_all": {}
+  }
+}
+
+GET popular/_search/?size=1000
+{
+  "query": {
+    "match_all": {}
+  }
+}
+
+GET popular/_search?search_type=count
+{
+  "query": {
+    "match_all": {}
+  }
+}
+
+GET popular/_search?search_type=count
+{
+    "aggs" : {
+        "distinct" : {
+            "cardinality" : {
+              "field" : "created_time" 
+            }
+        }
+    }
+}
+  
+GET popular/_search?search_type=count
+{
+    "aggs" : {
+        "tag_count" : {
+            "terms" : { 
+              "field" : "tags",
+              "size" : 0
+            }
+        }
+    }
+}
+
+GET popular/_search?search_type=count
+{
+  "aggs": {
+    "tag_count": {
+      "filter": {
+        "term": {
+          "tags": "red"
+        }
+      },
+      "terms": {
+        "field": "tags",
+        "size": 0
+      }
+    }
+  }
+}
+
+GET popular/_search?search_type=count
+{
+  "query": {
+    "filtered": {
+      "filter": {
+        "range": {
+          "date": {
+            "gte": "20150714",
+            "lte": "20150715"
+          }
+        }
+      }
+    }
+  },
+  "aggs": {
+    "tag_count": {
+      "terms": {
+        "field": "tags",
+        "size": 0
+      }
+    }
+  }
+}
