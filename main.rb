@@ -32,7 +32,6 @@ end
 get "/media_popular" do
   10.times do 
     client = Instagram.client(:access_token => session[:access_token])
-
     for media_item in client.media_popular
       #YYYYMMDD
       created_time = media_item.created_time.to_i
@@ -40,11 +39,6 @@ get "/media_popular" do
       date = date.strftime("%Y%m%d")
       es.index  index: 'popular', type: 'media_item', id: media_item.id, body: { tags: media_item.tags, posix_time: media_item.created_time, date: date }
     end
-
-    html = "<h1>Get a list of the overall most popular media items</h1>"
-    for media_item in client.media_popular
-      html << media_item.to_json
-    end
-    html
   end
+  "Done fetching most popular media"
 end
