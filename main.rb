@@ -11,8 +11,6 @@ CALLBACK_URL = "http://localhost:4567/oauth/callback"
 Instagram.configure do |config|
   config.client_id = "3912bfb0304246bcb87c844d9f16ff71"
   config.client_secret = "c613a4f3f8404a04866c9010858a1bb8"
-  # For secured endpoints only
-  # config.client_ips = '<Comma separated list of IPs>'
 end
 
 get "/" do
@@ -33,7 +31,7 @@ get "/media_popular" do
   10.times do 
     client = Instagram.client(:access_token => session[:access_token])
     for media_item in client.media_popular
-      #YYYYMMDD
+      # YYYYMMDD
       created_time = media_item.created_time.to_i
       date = Time.at(created_time).to_datetime
       date = date.strftime("%Y%m%d")
