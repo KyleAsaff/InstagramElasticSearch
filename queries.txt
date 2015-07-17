@@ -7,31 +7,14 @@ GET _search
   }
 }
 
-GET popular/_search/?size=1000
+GET popular/_search/?size=10000
 {
   "query": {
     "match_all": {}
   }
 }
 
-GET popular/_search?search_type=count
-{
-  "query": {
-    "match_all": {}
-  }
-}
-
-GET popular/_search?search_type=count
-{
-    "aggs" : {
-        "distinct" : {
-            "cardinality" : {
-              "field" : "created_time" 
-            }
-        }
-    }
-}
-  
+# Count all Hashtags
 GET popular/_search?search_type=count
 {
     "aggs" : {
@@ -44,23 +27,7 @@ GET popular/_search?search_type=count
     }
 }
 
-GET popular/_search?search_type=count
-{
-  "aggs": {
-    "tag_count": {
-      "filter": {
-        "term": {
-          "tags": "red"
-        }
-      },
-      "terms": {
-        "field": "tags",
-        "size": 0
-      }
-    }
-  }
-}
-
+# Count all Hashtags within a given date
 GET popular/_search?search_type=count
 {
   "query": {
@@ -69,7 +36,7 @@ GET popular/_search?search_type=count
         "range": {
           "date": {
             "gte": "20150714",
-            "lte": "20150715"
+            "lte": "20150716"
           }
         }
       }

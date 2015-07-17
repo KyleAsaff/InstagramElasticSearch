@@ -37,6 +37,7 @@ get "/media_popular" do
       created_time = media_item.created_time.to_i
       date = Time.at(created_time).to_datetime
       date = date.strftime("%Y%m%d")
+      # Insert media items as documents inside of Elastic Search
       es.index  index: 'popular', type: 'media_item', id: media_item.id, body: { tags: media_item.tags, posix_time: media_item.created_time, date: date }
     end
   end

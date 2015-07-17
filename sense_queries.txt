@@ -1,0 +1,53 @@
+DELETE popular
+
+GET _search
+{
+  "query": {
+    "match_all": {}
+  }
+}
+
+GET popular/_search/?size=10000
+{
+  "query": {
+    "match_all": {}
+  }
+}
+
+# Count all Hashtags
+GET popular/_search?search_type=count
+{
+    "aggs" : {
+        "tag_count" : {
+            "terms" : { 
+              "field" : "tags",
+              "size" : 0
+            }
+        }
+    }
+}
+
+# Count all Hashtags within a given date
+GET popular/_search?search_type=count
+{
+  "query": {
+    "filtered": {
+      "filter": {
+        "range": {
+          "date": {
+            "gte": "20150714",
+            "lte": "20150716"
+          }
+        }
+      }
+    }
+  },
+  "aggs": {
+    "tag_count": {
+      "terms": {
+        "field": "tags",
+        "size": 0
+      }
+    }
+  }
+}
