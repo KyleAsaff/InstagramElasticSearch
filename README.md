@@ -1,5 +1,5 @@
 # InstagramElasticSearch
-Instagram Hashtag Counter
+Instagram Hashtag Counter.
 
 # Description
 
@@ -13,4 +13,4 @@ Includes the queries needed to find the most popular hashtags in the ElasticSear
 
 #### research.txt
 
-My Initial research for the Instagram API
+Initial research for the Instagram API.
