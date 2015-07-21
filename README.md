@@ -5,12 +5,12 @@ Instagram Hashtag Counter.
 
 #### main.rb
 
-Uses the Instagram API to create documents for ElasticSearch database with most popular media.
+Uses the Instagram API to create documents for ElasticSearch database with most popular media
 
 #### sense_queries.txt 
 
-Includes the queries needed to find the most popular hashtags in the ElasticSearch database.
+Includes the queries needed to find the most popular hashtags in the ElasticSearch database
 
 #### research.txt
 
-Initial research for the Instagram API.
+Initial research for the Instagram API
