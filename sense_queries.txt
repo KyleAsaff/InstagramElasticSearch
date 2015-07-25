@@ -1,5 +1,6 @@
 DELETE popular
 
+
 GET _search
 {
   "query": {
@@ -7,12 +8,14 @@ GET _search
   }
 }
 
+
 GET popular/_search/?size=10000
 {
   "query": {
     "match_all": {}
   }
 }
+
 
 # Count all Hashtags
 GET popular/_search?search_type=count
@@ -26,6 +29,7 @@ GET popular/_search?search_type=count
         }
     }
 }
+
 
 # Count all Hashtags within a given date
 GET popular/_search?search_type=count
