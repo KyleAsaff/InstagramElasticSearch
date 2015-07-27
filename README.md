@@ -1,5 +1,5 @@
 # InstagramElasticSearch
-Instagram Hashtag Counter.
+Instagram Hashtag Counter
 
 # Description
 
